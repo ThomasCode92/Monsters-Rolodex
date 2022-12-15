@@ -27,6 +27,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Monsters Rolodex</h1>
+        <input
+          className="search-box"
+          type="search"
+          placeholder="search monsters"
+          onChange={event => {}}
+        />
         {this.state.monsters.map(monster => {
           return (
             <div key={monster.id}>
