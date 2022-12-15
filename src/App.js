@@ -6,33 +6,34 @@ class App extends Component {
     super();
 
     this.state = {
-      name: { firstName: 'Thomas', lastName: 'Code92' },
-      company: 'ZTM',
+      monsters: [],
     };
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(users => {
+        this.setState(
+          () => {
+            return { monsters: users };
+          },
+          () => console.log(this.state)
+        );
+      });
   }
 
   render() {
     return (
       <div className="App">
         <h1>Monsters Rolodex</h1>
-        <p>
-          Hi {this.state.name.firstName} {this.state.name.lastName}, I work at{' '}
-          {this.state.company}!
-        </p>
-        <button
-          onClick={() => {
-            this.setState(
-              () => {
-                return { name: { firstName: 'Andrei', lastName: 'Neagoie' } };
-              },
-              () => {
-                console.log(this.state);
-              }
-            );
-          }}
-        >
-          Change Name
-        </button>
+        {this.state.monsters.map(monster => {
+          return (
+            <div key={monster.id}>
+              <h1>{monster.name}</h1>
+            </div>
+          );
+        })}
       </div>
     );
   }
