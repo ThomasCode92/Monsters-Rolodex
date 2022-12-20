@@ -7,12 +7,22 @@ import './App.css';
 
 const App = () => {
   const [searchString, setSearchString] = useState('');
-  console.log(searchString);
+  const [monsters, setMonsters] = useState([]);
+
+  console.log('render');
+
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => setMonsters(users));
 
   function onSearchChange(event) {
     const inputValue = event.target.value.toLocaleLowerCase();
     setSearchString(inputValue);
   }
+
+  const filteredMonsters = monsters.filter(monster =>
+    monster.name.toLocaleLowerCase().includes(searchString)
+  );
 
   return (
     <div className="App">
@@ -22,7 +32,7 @@ const App = () => {
         placeholder="search monsters"
         onChangeHandler={onSearchChange}
       />
-      {/* <CardList monsters={filteredMonsters} /> */}
+      <CardList monsters={filteredMonsters} />
     </div>
   );
 };
