@@ -10,6 +10,8 @@ It is a project of the _[Complete React Developer](https://www.udemy.com/course/
 This project is build in 3 steps:
 
 - Step 1: Class Components ([Source code](https://github.com/ThomasCode92/Monsters-Rolodex/releases/tag/v1))
+- Step 2: Functional Components ([Source code](https://github.com/ThomasCode92/Monsters-Rolodex/releases/tag/v2))
+- Step 3: Typescript Components ([Source code](https://github.com/ThomasCode92/Monsters-Rolodex/releases/tag/v3))
 
 ## Available Scripts
 
